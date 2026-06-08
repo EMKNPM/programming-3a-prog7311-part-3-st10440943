@@ -1,0 +1,93 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="page-header">
+    <h2 class="page-title">Operations Dashboard</h2>
+    <p class="page-subtitle">Welcome to TechMove Global Logistics Management System</p>
+</div>
+
+<!-- Stats Row -->
+<div class="row g-3 mb-4">
+    <div class="col-md-3">
+        <div class="stat-card">
+            <span class="stat-icon">🏢</span>
+            <div class="stat-number" id="clientCount">—</div>
+            <div class="stat-label">Clients</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-card">
+            <span class="stat-icon">📄</span>
+            <div class="stat-number" id="contractCount">—</div>
+            <div class="stat-label">Contracts</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-card">
+            <span class="stat-icon">✅</span>
+            <div class="stat-number" id="activeCount">—</div>
+            <div class="stat-label">Active</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-card">
+            <span class="stat-icon">📋</span>
+            <div class="stat-number" id="requestCount">—</div>
+            <div class="stat-label">Service Requests</div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="glms-card mb-4">
+    <div class="glms-card-header">
+        <span class="glms-card-title">⚡ Quick Actions</span>
+    </div>
+    <div class="d-flex gap-3 flex-wrap">
+        <a asp-controller="Clients" asp-action="Create" class="btn-primary-custom">+ New Client</a>
+        <a asp-controller="Contracts" asp-action="Create" class="btn-primary-custom">+ New Contract</a>
+        <a asp-controller="ServiceRequests" asp-action="Create" class="btn-primary-custom">+ New Service Request</a>
+        <a asp-controller="Contracts" asp-action="Index" class="btn-info-custom">🔍 Search Contracts</a>
+    </div>
+</div>
+
+<!-- System Modules -->
+<div class="row g-3">
+    <div class="col-md-4">
+        <div class="glms-card h-100">
+            <div class="stat-icon text-center">🏢</div>
+            <h5 class="text-center fw-bold mb-2" style="color:var(--text-primary)">Client Management</h5>
+            <p style="color:var(--text-secondary);font-size:0.875rem;text-align:center">
+                Manage global client profiles, contact details, and regional assignments.
+            </p>
+            <div class="text-center mt-3">
+                <a asp-controller="Clients" asp-action="Index" class="btn-primary-custom">Open Module</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="glms-card h-100">
+            <div class="stat-icon text-center">📄</div>
+            <h5 class="text-center fw-bold mb-2" style="color:var(--text-primary)">Contract Hub</h5>
+            <p style="color:var(--text-secondary);font-size:0.875rem;text-align:center">
+                Centralised repository for legal agreements, SLAs, and signed PDF documents.
+            </p>
+            <div class="text-center mt-3">
+                <a asp-controller="Contracts" asp-action="Index" class="btn-primary-custom">Open Module</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="glms-card h-100">
+            <div class="stat-icon text-center">📋</div>
+            <h5 class="text-center fw-bold mb-2" style="color:var(--text-primary)">Service Requests</h5>
+            <p style="color:var(--text-secondary);font-size:0.875rem;text-align:center">
+                Raise, track and manage logistics service requests with live currency conversion.
+            </p>
+            <div class="text-center mt-3">
+                <a asp-controller="ServiceRequests" asp-action="Index" class="btn-primary-custom">Open Module</a>
+            </div>
+        </div>
+    </div>
+</div>

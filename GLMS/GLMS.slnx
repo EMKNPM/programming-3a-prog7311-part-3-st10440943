@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="../../GLMS.API/GLMS.API.csproj" />
+  <Project Path="../../GLMS.Tests/GLMS.Tests.csproj" />
+  <Project Path="../../GLMS/GLMS.csproj" />
+</Solution>

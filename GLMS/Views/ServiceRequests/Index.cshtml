@@ -1,0 +1,65 @@
+﻿@model IEnumerable<GLMS.Web.Models.ServiceRequest>
+@{
+    ViewData["Title"] = "Service Requests";
+}
+
+<div class="page-header d-flex justify-content-between align-items-center">
+    <div>
+        <h2 class="page-title">Service Requests</h2>
+        <p class="page-subtitle">Manage and track all logistics service requests</p>
+    </div>
+    <a asp-action="Create" class="btn-primary-custom">+ New Request</a>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="empty-state">
+        <div class="empty-icon">📋</div>
+        <h4>No Service Requests Yet</h4>
+        <p>Create your first service request against an active contract.</p>
+        <a asp-action="Create" class="btn-primary-custom mt-2">+ New Request</a>
+    </div>
+}
+else
+{
+    <div class="glms-card">
+        <div class="table-responsive">
+            <table class="table glms-table">
+                <thead>
+                    <tr>
+                        <th>Contract</th>
+                        <th>Description</th>
+                        <th>Cost (USD)</th>
+                        <th>Cost (ZAR)</th>
+                        <th>Rate Used</th>
+                        <th>Status</th>
+                        <th>Created</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var r in Model)
+                    {
+                        <tr>
+                            <td class="fw-semibold">@r.Contract?.ServiceLevel</td>
+                            <td>@r.Description</td>
+                            <td class="fw-semibold" style="color:var(--green-primary)">$@r.CostUSD.ToString("N2")</td>
+                            <td class="fw-semibold">R @r.CostZAR.ToString("N2")</td>
+                            <td><small style="color:var(--text-muted)">@r.ExchangeRateUsed</small></td>
+                            <td>
+                                <span class="status-badge status-@r.Status.ToString().ToLower()">
+                                    @r.Status
+                                </span>
+                            </td>
+                            <td><small>@r.CreatedDate.ToString("dd MMM yyyy")</small></td>
+                            <td>
+                                <a asp-action="Delete" asp-route-id="@r.Id"
+                                   class="btn-danger-custom">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}

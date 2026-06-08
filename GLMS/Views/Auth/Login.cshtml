@@ -1,0 +1,170 @@
+﻿@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GLMS - Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+            :root {
+                --charcoal-900: #1a1a2e;
+                --surface-card: #252535;
+                --green-primary: #00b894;
+                --green-dark: #00897b;
+                --border-color: #333355;
+                --text-primary: #e8e8f0;
+                --text-secondary: #9999bb;
+                --surface-light: #2a2a3e;
+            }
+
+            body {
+                font-family: 'Inter', sans-serif;
+                background: var(--charcoal-900);
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .login-card {
+                background: var(--surface-card);
+                border: 1px solid var(--border-color);
+                border-radius: 16px;
+                padding: 2.5rem;
+                width: 100%;
+                max-width: 420px;
+                box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            }
+
+            .login-logo {
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+
+                .login-logo h1 {
+                    font-size: 2rem;
+                    font-weight: 700;
+                    color: var(--green-primary);
+                    letter-spacing: 3px;
+                    text-transform: uppercase;
+                }
+
+                .login-logo p {
+                    color: var(--text-secondary);
+                    font-size: 0.85rem;
+                    margin: 0;
+                }
+
+            .form-label {
+                color: var(--text-secondary);
+                font-size: 0.8rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+
+            .form-control {
+                background: var(--surface-light) !important;
+                border: 1px solid var(--border-color) !important;
+                color: var(--text-primary) !important;
+                border-radius: 8px !important;
+                padding: 0.65rem 1rem;
+            }
+
+                .form-control:focus {
+                    border-color: var(--green-primary) !important;
+                    box-shadow: 0 0 0 3px rgba(0,184,148,0.15) !important;
+                }
+
+            .btn-login {
+                background: var(--green-primary);
+                color: #fff;
+                border: none;
+                border-radius: 8px;
+                padding: 0.7rem;
+                font-weight: 600;
+                width: 100%;
+                font-size: 0.95rem;
+                transition: all 0.2s;
+            }
+
+                .btn-login:hover {
+                    background: var(--green-dark);
+                    transform: translateY(-1px);
+                }
+
+            .error-box {
+                background: rgba(231,76,60,0.1);
+                border: 1px solid rgba(231,76,60,0.3);
+                color: #e74c3c;
+                border-radius: 8px;
+                padding: 0.75rem 1rem;
+                font-size: 0.875rem;
+                margin-bottom: 1rem;
+            }
+
+            .demo-credentials {
+                background: rgba(0,184,148,0.05);
+                border: 1px solid rgba(0,184,148,0.2);
+                border-radius: 8px;
+                padding: 1rem;
+                margin-top: 1.5rem;
+            }
+
+                .demo-credentials p {
+                    color: var(--text-secondary);
+                    font-size: 0.8rem;
+                    margin: 0 0 0.5rem 0;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                }
+
+                .demo-credentials code {
+                    color: var(--green-primary);
+                    font-size: 0.85rem;
+                    display: block;
+                    margin: 2px 0;
+                }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <div class="login-logo">
+            <h1>⬡ GLMS</h1>
+            <p>Global Logistics Management System</p>
+        </div>
+
+        @if (ViewBag.Error != null)
+        {
+            <div class="error-box">⚠️ @ViewBag.Error</div>
+        }
+
+        <form method="post" asp-action="Login">
+            <div class="mb-3">
+                <label class="form-label">Username</label>
+                <input type="text" name="username" class="form-control"
+                       placeholder="Enter username" required />
+            </div>
+            <div class="mb-4">
+                <label class="form-label">Password</label>
+                <input type="password" name="password" class="form-control"
+                       placeholder="Enter password" required />
+            </div>
+            <button type="submit" class="btn-login">Sign In</button>
+        </form>
+
+        <div class="demo-credentials">
+            <p>Demo Credentials</p>
+            <code>admin / Admin@1234</code>
+            <code>manager / Manager@1234</code>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+﻿@model GLMS.Web.Models.ServiceRequest
+@{
+    ViewData["Title"] = "New Service Request";
+}
+
+<div class="page-header">
+    <h2 class="page-title">New Service Request</h2>
+    <p class="page-subtitle">Raise a request against an active contract</p>
+</div>
+
+<div class="glms-alert">
+    💱 Live Exchange Rate: <strong>1 USD = R @ViewBag.ExchangeRate</strong> &nbsp;|&nbsp; Source: ExchangeRate-API
+</div>
+
+<div class="glms-form-card">
+    <form asp-action="Create" method="post">
+        <div asp-validation-summary="All" class="glms-alert glms-alert-danger mb-3"></div>
+        <div class="mb-3">
+            <label asp-for="ContractId" class="form-label">Active Contract</label>
+            <select asp-for="ContractId" asp-items="ViewBag.Contracts" class="form-select">
+                <option value="">-- Select Active Contract --</option>
+            </select>
+            <span asp-validation-for="ContractId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label"></label>
+            <textarea asp-for="Description" class="form-control" rows="3"
+                      placeholder="Describe the logistics service required..."></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="row g-3 mb-3">
+            <div class="col-md-6">
+                <label asp-for="CostUSD" class="form-label">Cost (USD $)</label>
+                <input asp-for="CostUSD" class="form-control" id="costUSD"
+                       placeholder="0.00" oninput="calcZar()" />
+                <span asp-validation-for="CostUSD" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Converted Cost (ZAR R)</label>
+                <input class="form-control" id="zarDisplay" readonly placeholder="Auto-calculated" />
+            </div>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Status" class="form-label"></label>
+            <select asp-for="Status"
+                    asp-items="Html.GetEnumSelectList<GLMS.Web.Models.RequestStatus>()"
+                    class="form-select"></select>
+        </div>
+        <div class="d-flex gap-2 mt-4">
+            <button type="submit" class="btn-primary-custom">Submit Request</button>
+            <a asp-action="Index" class="btn-warning-custom">Cancel</a>
+        </div>
+    </form>
+</div>
+
+<script>
+    var rate = parseFloat('@ViewBag.ExchangeRate');
+    function calcZar() {
+        var usd = parseFloat(document.getElementById('costUSD').value) || 0;
+        document.getElementById('zarDisplay').value = 'R ' + (usd * rate).toFixed(2);
+    }
+</script>

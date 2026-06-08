@@ -1,0 +1,36 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.4.11702.344
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GLMS", "GLMS.csproj", "{E7E3498D-7FEA-422D-A6EF-DC9740469E50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GLMS.API", "..\GLMS.API\GLMS.API.csproj", "{D3AF05E5-32CC-40BF-94C9-37BAAF8E65CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GLMS.Tests", "..\GLMS.Tests\GLMS.Tests.csproj", "{70F862FA-E487-809C-7C7D-B8772275FA92}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E7E3498D-7FEA-422D-A6EF-DC9740469E50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7E3498D-7FEA-422D-A6EF-DC9740469E50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7E3498D-7FEA-422D-A6EF-DC9740469E50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7E3498D-7FEA-422D-A6EF-DC9740469E50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3AF05E5-32CC-40BF-94C9-37BAAF8E65CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3AF05E5-32CC-40BF-94C9-37BAAF8E65CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3AF05E5-32CC-40BF-94C9-37BAAF8E65CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3AF05E5-32CC-40BF-94C9-37BAAF8E65CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70F862FA-E487-809C-7C7D-B8772275FA92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70F862FA-E487-809C-7C7D-B8772275FA92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70F862FA-E487-809C-7C7D-B8772275FA92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70F862FA-E487-809C-7C7D-B8772275FA92}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {175EAAF0-306B-4934-9564-537AB7228009}
+	EndGlobalSection
+EndGlobal

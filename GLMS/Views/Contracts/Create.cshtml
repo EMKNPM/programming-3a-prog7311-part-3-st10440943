@@ -1,0 +1,48 @@
+﻿@model GLMS.Web.Models.Contract
+@{
+    ViewData["Title"] = "New Contract";
+}
+
+<div class="page-header">
+    <h2 class="page-title">New Contract</h2>
+    <p class="page-subtitle">Create a new logistics agreement</p>
+</div>
+
+<div class="glms-form-card">
+    <form asp-action="Create" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label asp-for="ClientId" class="form-label">Client</label>
+            <select asp-for="ClientId" asp-items="ViewBag.Clients" class="form-select">
+                <option value="">-- Select Client --</option>
+            </select>
+            <span asp-validation-for="ClientId" class="text-danger"></span>
+        </div>
+        <div class="row g-3 mb-3">
+            <div class="col-md-6">
+                <label asp-for="StartDate" class="form-label"></label>
+                <input asp-for="StartDate" type="date" class="form-control" />
+            </div>
+            <div class="col-md-6">
+                <label asp-for="EndDate" class="form-label"></label>
+                <input asp-for="EndDate" type="date" class="form-control" />
+            </div>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Status" class="form-label"></label>
+            <select asp-for="Status" asp-items="Html.GetEnumSelectList<GLMS.Web.Models.ContractStatus>()" class="form-select"></select>
+        </div>
+        <div class="mb-3">
+            <label asp-for="ServiceLevel" class="form-label"></label>
+            <input asp-for="ServiceLevel" class="form-control" placeholder="e.g. Premium SLA, Standard, Express" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Signed Agreement (PDF only)</label>
+            <input type="file" name="signedAgreement" class="form-control" accept=".pdf" />
+            <span class="text-danger">@ViewData.ModelState["signedAgreement"]?.Errors.FirstOrDefault()?.ErrorMessage</span>
+        </div>
+        <div class="d-flex gap-2 mt-4">
+            <button type="submit" class="btn-primary-custom">Create Contract</button>
+            <a asp-action="Index" class="btn-warning-custom">Cancel</a>
+        </div>
+    </form>
+</div>
